@@ -39,7 +39,8 @@ html_pairs  = [
                ("&lt;",  " < "),
               ]
 
-tokenizer = English().Defaults.create_tokenizer()
+tokenizer = English().tokenizer 
+#.Defaults.create_tokenizer()
 
 # tokenizes and removes URLs (kept in separate list)
 def pre_word_url_tokenize(stp):
