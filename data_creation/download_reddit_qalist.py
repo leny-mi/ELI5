@@ -63,7 +63,7 @@ def download_and_process(file_url, mode, subreddit_names, st_time):
                 f   = bz2.open(f_name, 'rt')
             elif f_name.split('.')[-1] == 'zst':
                 fh              = open(f_name, 'rb')
-                dctx            = zstd.ZstdDecompressor()
+                dctx            = zstd.ZstdDecompressor(max_window_size=2147483648)
                 stream_reader   = dctx.stream_reader(fh)
                 f   = io.TextIOWrapper(stream_reader, encoding='utf-8')
             lines   = dict([(name, []) for name in subreddit_names])
